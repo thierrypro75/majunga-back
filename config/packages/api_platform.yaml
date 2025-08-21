@@ -1,7 +1,30 @@
 api_platform:
-    title: Hello API Platform
-    version: 1.0.0
+    title: "API Platform - Système d'authentification"
+    version: "1.0.0"
+    description: "API REST pour la gestion des utilisateurs et l'authentification JWT"
     defaults:
         stateless: true
         cache_headers:
             vary: ['Content-Type', 'Authorization', 'Origin']
+        extra_properties:
+            standard_put: true
+            generate_legacy_aliases: false
+        pagination_client_enabled: true
+        pagination_client_items_per_page: true
+        pagination_items_per_page_parameter_name: 'itemsPerPage'
+        pagination_maximum_items_per_page: 50
+    docs_formats:
+        jsonld: ['application/ld+json']
+        jsonopenapi: ['application/vnd.openapi+json']
+        html: ['text/html']
+    collection:
+        pagination:
+            enabled: true
+            enabled_parameter_name: 'pagination'
+            items_per_page_parameter_name: 'itemsPerPage'
+            page_parameter_name: 'page'
+    swagger:
+        api_keys:
+            JWT:
+                name: Authorization
+                type: header
